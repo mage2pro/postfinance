@@ -70,5 +70,10 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @used-by \Df\PaypalClone\Charge::p()
 	 * @return array(string => mixed)
 	 */
-	protected function pCharge() {$s = $this->s(); return [];}
+	protected function pCharge() {$s = $this->s(); return [
+		// 2017-08-19
+		// «Customer name. Will be pre-initialised (but still editable)
+		// in the Customer Name field of the credit card details.»
+		'CN' => $this->customerName()
+	];}
 }
