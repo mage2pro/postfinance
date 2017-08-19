@@ -29,6 +29,15 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @return string
 	 */
 	protected function k_Currency() {return 'CURRENCY';}
+
+	/**
+	 * 2017-08-19 «Customer email address»
+	 * @override
+	 * @see \Df\PaypalClone\Charge::k_Email()
+	 * @used-by \Df\PaypalClone\Charge::p()
+	 * @return string
+	 */
+	protected function k_Email() {return 'EMAIL';}
 	
 	/**
 	 * 2017-08-19
