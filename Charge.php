@@ -25,6 +25,7 @@ use Magento\Sales\Model\Order\Address as OA;
  * 3.1) BillPay: https://e-payment-postfinance.v-psp.com/it/it/guides/integration%20guides/billpay/integration
  * 3.2) DirectLink (server-to-server)
  * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
+ * 3.3) [PostFinance] «Fraud Detection Module Advanced: Scoring», v.4.4.5: https://mage2.pro/t/4351
  *
  * @method Method m()
  * @method Settings s()
@@ -109,17 +110,38 @@ final class Charge extends \Df\PaypalClone\Charge {
 		$ba = $this->addressB(); /** @var OA $oa */
 		$s = $this->s(); /** @var Settings $s */
 		return [
-			// 2017-08-19
-			// «Customer name. Will be pre-initialised (but still editable)
-			// in the Customer Name field of the credit card details.»
-			// Optional.
+			/**
+			 * 2017-08-19
+			 * *) Integrate with PostFinance e-Commerce:
+			 * «Customer name. Will be pre-initialised (but still editable)
+			 * in the Customer Name field of the credit card details.»
+			 * Optional.
+			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters
+			 * *) Fraud Detection Module:
+			 * «The cardholder name can contain a maximum of 35 characters.
+			 * This parameter can be sent via Ogone e-Commerce, DirectLink and Batch.
+			 * Please note that for Ogone e-Commerce the cardholder’s name
+			 * will also be captured via the Ogone payment page,
+			 * where the cardholder’s name is a mandatory field.»
+			 * Rules/Checks:
+			 *	*) Name blacklist
+			 *	*) Name greylist
+			 *	*) Passenger name different from cardholder name.
+			 * https://mage2.pro/t/4351
+			 */
 			'CN' => $this->customerName()
 			/**
 			 * 2017-08-19
-			 * 1) BillPay: «Invoicing address».  Optional. «Alphanumeric, 35».
+			 * *) Integrate with PostFinance e-Commerce: «Customer street name and number». Optional.
+			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters
+			 * *) BillPay: «Invoicing address». Optional. «Alphanumeric, 35».
 			 * https://e-payment-postfinance.v-psp.com/it/it/guides/integration%20guides/billpay/integration#deliveryinvoicingdata
-			 * 2) DirectLink (server-to-server):  «Customer street name and number». Optional. «Alphanumeric, 50»
+			 * *) DirectLink (server-to-server): «Customer street name and number». Optional. «Alphanumeric, 50»
 			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
+			 * *) Fraud Detection Module:
+			 * «Customer’s address may contain a maximum of 35 characters.»
+			 * Rules/Checks: «Invoicing address is a P.O. Box.»
+			 * https://mage2.pro/t/4351
 			 */
 			,'OWNERADDRESS' => df_cc_s($ba->getStreet())
 			// 2017-08-19 «Customer country». Optional. «Alphanumeric, 2».
@@ -129,6 +151,22 @@ final class Charge extends \Df\PaypalClone\Charge {
 			// 2017-08-19 «Customer town/city/...». Optional. «Alphanumeric, 25».
 			,'OWNERTOWN' => $ba->getCity()
 			// 2017-08-19 «Customer postcode or ZIP code». Optional. «Alphanumeric, 10».
+			/**
+			 * 2017-08-19
+			 * *) Integrate with PostFinance e-Commerce:
+			 * «Customer postcode or ZIP code», Optional.
+			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters
+			 * *) BillPay: «Invoicing zip/postcode». Optional. «Alphanumeric, 10».
+			 * https://e-payment-postfinance.v-psp.com/it/it/guides/integration%20guides/billpay/integration#deliveryinvoicingdata
+			 * *) DirectLink (server-to-server): «Customer’s postcode.». Optional. «Alphanumeric, 10»
+			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
+			 * *) Fraud Detection Module:
+			 * «Customer’s zip/postal code may contain a maximum of 10 characters»
+			 * Rules/Checks:
+			 *	*) Risky zip/postcodes
+			 *	*) Advanced address verification check for specific card brands only
+			 * https://mage2.pro/t/4351
+			 */
 			,'OWNERZIP' => $ba->getPostcode()
 		];
 	}
