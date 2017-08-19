@@ -84,5 +84,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 		// «Customer name. Will be pre-initialised (but still editable)
 		// in the Customer Name field of the credit card details.»
 		'CN' => $this->customerName()
+		// 2017-08-19 «Customer street name and number.»
+		,'OWNERADDRESS' => df_cc_s($this->addressB()->getStreet())
 	];}
 }
