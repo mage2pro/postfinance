@@ -1,5 +1,6 @@
 <?php
 namespace Dfe\PostFinance;
+use Magento\Sales\Model\Order\Address as OA;
 /**
  * 2017-08-18
  * 2017-08-19
@@ -79,12 +80,18 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @used-by \Df\PaypalClone\Charge::p()
 	 * @return array(string => mixed)
 	 */
-	protected function pCharge() {$s = $this->s(); return [
-		// 2017-08-19
-		// «Customer name. Will be pre-initialised (but still editable)
-		// in the Customer Name field of the credit card details.»
-		'CN' => $this->customerName()
-		// 2017-08-19 «Customer street name and number.»
-		,'OWNERADDRESS' => df_cc_s($this->addressB()->getStreet())
-	];}
+	protected function pCharge() {
+		$ba = $this->addressB(); /** @var OA $oa */
+		$s = $this->s(); /** @var Settings $s */
+		return [
+			// 2017-08-19
+			// «Customer name. Will be pre-initialised (but still editable)
+			// in the Customer Name field of the credit card details.»
+			'CN' => $this->customerName()
+			// 2017-08-19 «Customer street name and number»
+			,'OWNERADDRESS' => df_cc_s($ba->getStreet())
+			// 2017-08-19 «Customer postcode or ZIP code»
+			,'OWNERZIP' => $ba->getPostcode()
+		];
+	}
 }
