@@ -11,6 +11,18 @@ namespace Dfe\PostFinance;
 final class Charge extends \Df\PaypalClone\Charge {
 	/**
 	 * 2017-08-19
+	 * «Amount to be paid,
+	 * MULTIPLIED BY 100 since the format of the amount must not contain any decimals or other separators.
+	 * The AMOUNT has to be assigned dynamically.»
+	 * @override
+	 * @see \Df\PaypalClone\Charge::k_Amount()
+	 * @used-by \Df\PaypalClone\Charge::p()
+	 * @return string
+	 */
+	protected function k_Amount() {return 'AMOUNT';}
+	
+	/**
+	 * 2017-08-19
 	 * «Your affiliation name in our system»
 	 * `[PostFinance] What is my PSPID?` https://mage2.pro/t/4349
 	 * @override
