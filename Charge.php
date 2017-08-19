@@ -20,6 +20,15 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @return string
 	 */
 	protected function k_Amount() {return 'AMOUNT';}
+
+	/**
+	 * 2017-08-19 «Currency of the order. ISO alpha code, e.g. EUR, USD, GBP, etc.»
+	 * @override
+	 * @see \Df\PaypalClone\Charge::k_Currency()
+	 * @used-by \Df\PaypalClone\Charge::p()
+	 * @return string
+	 */
+	protected function k_Currency() {return 'CURRENCY';}
 	
 	/**
 	 * 2017-08-19
