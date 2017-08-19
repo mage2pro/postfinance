@@ -144,7 +144,22 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 * https://mage2.pro/t/4351
 			 */
 			,'OWNERADDRESS' => df_cc_s($ba->getStreet())
-			// 2017-08-19 «Customer country». Optional. «Alphanumeric, 2».
+			/**
+			 * 2017-08-19
+			 * *) Integrate with PostFinance e-Commerce: «Customer country». Optional.
+			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters
+			 * *) BillPay: «Invoicing country code». Optional. «Alphanumeric, 2».
+			 * https://e-payment-postfinance.v-psp.com/it/it/guides/integration%20guides/billpay/integration#deliveryinvoicingdata
+			 * *) DirectLink (server-to-server): «Customer’s country, e.g. BE, NL, FR, etc.».
+			 * Optional. «Alphanumeric, 2»
+			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
+			 * *) Fraud Detection Module:
+			 * «Customers invoicing country may contain a maximum of 2 characters.
+			 * Country in ISO 3166-1-alpha-2 code as can be found on
+			 * http://www.iso.org/iso/en/prodsservices/iso3166ma/02iso-3166-code-lists/list-en1.html.»
+			 * Rules/Checks: «Number of different countries.»
+			 * https://mage2.pro/t/4351
+			 */
 			,'OWNERCTY' => $ba->getCountryId()
 			// 2017-08-19 «Customer telephone number». Optional.
 			,'OWNERTELNO' => $this->addressBS()->getTelephone()
