@@ -26,7 +26,7 @@ use Magento\Sales\Model\Order\Address as OA;
  * 3.2) DirectLink (server-to-server)
  * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
  * 3.3) [PostFinance] «Fraud Detection Module Advanced: Scoring», v.4.4.5: https://mage2.pro/t/4351
- *
+ * 3.4) [PostFinance] «Fraud Detection Module Advanced: Checklist», v.4.4.5: https://mage2.pro/t/4352
  * @method Method m()
  * @method Settings s()
  */
@@ -128,6 +128,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 *	*) Name greylist
 			 *	*) Passenger name different from cardholder name.
 			 * https://mage2.pro/t/4351
+			 * https://mage2.pro/t/4352
 			 */
 			'CN' => $this->customerName()
 			/**
@@ -142,6 +143,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 * «Customer’s address may contain a maximum of 35 characters.»
 			 * Rules/Checks: «Invoicing address is a P.O. Box.»
 			 * https://mage2.pro/t/4351
+			 * https://mage2.pro/t/4352
 			 */
 			,'OWNERADDRESS' => df_cc_s($ba->getStreet())
 			/**
@@ -159,6 +161,14 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 * http://www.iso.org/iso/en/prodsservices/iso3166ma/02iso-3166-code-lists/list-en1.html.»
 			 * Rules/Checks: «Number of different countries.»
 			 * https://mage2.pro/t/4351
+			 * https://mage2.pro/t/4352
+			 * *) Fraud Detection Module (basic):
+			 * «Before our system can apply the filters you set,
+			 * you must either send your customer's country code
+			 * in the hidden `OWNERCTY` field for each transaction,
+			 * or enter `?` in the `OWNERCTY` field
+			 * if you want our system to automatically detect your customer's country from his IP address.»
+			 * https://mage2.pro/t/4353
 			 */
 			,'OWNERCTY' => $ba->getCountryId()
 			// 2017-08-19 «Customer telephone number». Optional.
@@ -181,6 +191,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 *	*) Risky zip/postcodes
 			 *	*) Advanced address verification check for specific card brands only
 			 * https://mage2.pro/t/4351
+			 * https://mage2.pro/t/4352
 			 */
 			,'OWNERZIP' => $ba->getPostcode()
 		];
