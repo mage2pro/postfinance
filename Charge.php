@@ -36,7 +36,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * «Amount to be paid,
 	 * MULTIPLIED BY 100 since the format of the amount must not contain any decimals or other separators.
 	 * The AMOUNT has to be assigned dynamically.»
-	 * Required. «Numeric».
+	 * Required. Numeric.
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_Amount()
 	 * @used-by \Df\PaypalClone\Charge::p()
@@ -47,7 +47,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	/**
 	 * 2017-08-19
 	 * «Currency of the order. ISO alpha code, e.g. EUR, USD, GBP, etc.».
-	 * Required. «Alphanumeric, 3».
+	 * Required. Alphanumeric (3).
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_Currency()
 	 * @used-by \Df\PaypalClone\Charge::p()
@@ -68,7 +68,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * 2017-08-19
 	 * «Your affiliation name in our system».
 	 * `[PostFinance] What is my PSPID?` https://mage2.pro/t/4349
-	 * Required. «Alphanumeric, 30».
+	 * Required. Alphanumeric (30).
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_MerchantId()
 	 * @used-by \Df\PaypalClone\Charge::p()
@@ -82,7 +82,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * «Your order number (merchant reference).
 	 * The system checks that a payment has not been requested twice for the same order.
 	 * The ORDERID has to be assigned dynamically.»
-	 * Required. «Alphanumeric, 40».
+	 * Required. Alphanumeric (40).
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_RequestId()
 	 * @used-by \Df\PaypalClone\Charge::p()
@@ -117,6 +117,8 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 * in the Customer Name field of the credit card details.»
 			 * Optional.
 			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters
+			 * *) BillPay: not mentioned.
+			 * *) DirectLink (server-to-server): «Customer name». Optional. Alphanumeric (35).
 			 * *) Fraud Detection Module:
 			 * «The cardholder name can contain a maximum of 35 characters.
 			 * This parameter can be sent via Ogone e-Commerce, DirectLink and Batch.
@@ -135,9 +137,9 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 * 2017-08-19
 			 * *) Integrate with PostFinance e-Commerce: «Customer street name and number». Optional.
 			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters
-			 * *) BillPay: «Invoicing address». Optional. «Alphanumeric, 35».
+			 * *) BillPay: «Invoicing address». Optional. Alphanumeric (35).
 			 * https://e-payment-postfinance.v-psp.com/it/it/guides/integration%20guides/billpay/integration#deliveryinvoicingdata
-			 * *) DirectLink (server-to-server): «Customer street name and number». Optional. «Alphanumeric, 50»
+			 * *) DirectLink (server-to-server): «Customer street name and number». Optional. Alphanumeric (50).
 			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
 			 * *) Fraud Detection Module:
 			 * «Customer’s address may contain a maximum of 35 characters.»
@@ -150,10 +152,10 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 * 2017-08-19
 			 * *) Integrate with PostFinance e-Commerce: «Customer country». Optional.
 			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters
-			 * *) BillPay: «Invoicing country code». Optional. «Alphanumeric, 2».
+			 * *) BillPay: «Invoicing country code». Optional. Alphanumeric (2).
 			 * https://e-payment-postfinance.v-psp.com/it/it/guides/integration%20guides/billpay/integration#deliveryinvoicingdata
 			 * *) DirectLink (server-to-server): «Customer’s country, e.g. BE, NL, FR, etc.».
-			 * Optional. «Alphanumeric, 2»
+			 * Optional. Alphanumeric (2).
 			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
 			 * *) Fraud Detection Module:
 			 * «Customers invoicing country may contain a maximum of 2 characters.
@@ -176,7 +178,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 * *) Integrate with PostFinance e-Commerce: «Customer telephone number». Optional.
 			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters
 			 * *) BillPay: not mentioned.
-			 * *) DirectLink (server-to-server): «Customer’s telephone number». Optional. «Alphanumeric, 30»
+			 * *) DirectLink (server-to-server): «Customer’s telephone number». Optional. Alphanumeric (30).
 			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
 			 * *) Fraud Detection Module:
 			 * «Customer’s telephone number may contain a maximum of 30 characters for all Ogone modules
@@ -190,17 +192,25 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 * https://mage2.pro/t/4352
 			 */
 			,'OWNERTELNO' => $this->addressBS()->getTelephone()
-			// 2017-08-19 «Customer town/city/...». Optional. «Alphanumeric, 25».
+			/**
+			 * 2017-08-19
+			 * *) Integrate with PostFinance e-Commerce: «Customer town/city/...». Optional.
+			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters
+			 * *) BillPay: «Invoicing city». Optional. Alphanumeric (25).
+			 * *) DirectLink (server-to-server): «Customer’s town/city name». Optional. Alphanumeric (40).
+			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
+			 * *) Fraud Detection Module: not mentioned.
+			 */
 			,'OWNERTOWN' => $ba->getCity()
-			// 2017-08-19 «Customer postcode or ZIP code». Optional. «Alphanumeric, 10».
+			// 2017-08-19 «Customer postcode or ZIP code». Optional. Alphanumeric (10).
 			/**
 			 * 2017-08-19
 			 * *) Integrate with PostFinance e-Commerce:
 			 * «Customer postcode or ZIP code», Optional.
 			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters
-			 * *) BillPay: «Invoicing zip/postcode». Optional. «Alphanumeric, 10».
+			 * *) BillPay: «Invoicing zip/postcode». Optional. Alphanumeric (10).
 			 * https://e-payment-postfinance.v-psp.com/it/it/guides/integration%20guides/billpay/integration#deliveryinvoicingdata
-			 * *) DirectLink (server-to-server): «Customer’s postcode.». Optional. «Alphanumeric, 10»
+			 * *) DirectLink (server-to-server): «Customer’s postcode.». Optional. Alphanumeric (10).
 			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
 			 * *) Fraud Detection Module:
 			 * «Customer’s zip/postal code may contain a maximum of 10 characters»
