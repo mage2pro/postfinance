@@ -73,8 +73,8 @@
 					showInWebsite='1'
 					showInStore='1'
 				>
-					<label>Test Public Key</label>
-					<comment><![CDATA[<a href='https://mage2.pro/c/extensions/postfinance' target='_blank'>How to get it?</a>]]></comment>
+					<label>Test PSPID</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4349' target='_blank'>What is get it?</a>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
 						<field id='test'>1</field>
@@ -108,8 +108,8 @@
 					showInWebsite='1'
 					showInStore='1'
 				>
-					<label>Live Public Key</label>
-					<comment><![CDATA[]]></comment>
+					<label>Live PSPID</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4349' target='_blank'>What is get it?</a>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
 						<field id='test'>0</field>
