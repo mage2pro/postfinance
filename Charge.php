@@ -171,7 +171,24 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 * https://mage2.pro/t/4353
 			 */
 			,'OWNERCTY' => $ba->getCountryId()
-			// 2017-08-19 «Customer telephone number». Optional.
+			/**
+			 * 2017-08-19
+			 * *) Integrate with PostFinance e-Commerce: «Customer telephone number». Optional.
+			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters
+			 * *) BillPay: not mentioned.
+			 * *) DirectLink (server-to-server): «Customer’s telephone number». Optional. «Alphanumeric, 30»
+			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
+			 * *) Fraud Detection Module:
+			 * «Customer’s telephone number may contain a maximum of 30 characters for all Ogone modules
+			 * with the exception of Ogone Batch which has a maximum of 20 characters.
+			 * Special characters (“+” or “/” for instance) are allowed in this field.
+			 * It’s best to be consistent in the way you send the phone numbers.»
+			 * Rules/Checks:
+			 * 	*) Telephone number greylist
+			 * 	*) Telephone number blacklist
+			 * https://mage2.pro/t/4351
+			 * https://mage2.pro/t/4352
+			 */
 			,'OWNERTELNO' => $this->addressBS()->getTelephone()
 			// 2017-08-19 «Customer town/city/...». Optional. «Alphanumeric, 25».
 			,'OWNERTOWN' => $ba->getCity()
