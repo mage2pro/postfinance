@@ -22,8 +22,9 @@ use Magento\Sales\Model\Order\Address as OA;
  *
  * Note 3.
  * The data format is described here:
- * https://e-payment-postfinance.v-psp.com/it/it/guides/integration%20guides/billpay/integration
- * It documents «BillPay», but I think the format is common for all PostFinance technologies.
+ * 3.1) BillPay: https://e-payment-postfinance.v-psp.com/it/it/guides/integration%20guides/billpay/integration
+ * 3.2) DirectLink (server-to-server)
+ * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
  *
  * @method Method m()
  * @method Settings s()
@@ -113,15 +114,21 @@ final class Charge extends \Df\PaypalClone\Charge {
 			// in the Customer Name field of the credit card details.»
 			// Optional.
 			'CN' => $this->customerName()
-			// 2017-08-19 «Customer street name and number». Optional.
+			/**
+			 * 2017-08-19
+			 * 1) BillPay: «Invoicing address».  Optional. «Alphanumeric, 35».
+			 * https://e-payment-postfinance.v-psp.com/it/it/guides/integration%20guides/billpay/integration#deliveryinvoicingdata
+			 * 2) DirectLink (server-to-server):  «Customer street name and number». Optional. «Alphanumeric, 50»
+			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/directlink#requestparameters
+			 */
 			,'OWNERADDRESS' => df_cc_s($ba->getStreet())
-			// 2017-08-19 «Customer country». Optional.
+			// 2017-08-19 «Customer country». Optional. «Alphanumeric, 2».
 			,'OWNERCTY' => $ba->getCountryId()
 			// 2017-08-19 «Customer telephone number». Optional.
 			,'OWNERTELNO' => $this->addressBS()->getTelephone()
-			// 2017-08-19 «Customer town/city/...». Optional.
+			// 2017-08-19 «Customer town/city/...». Optional. «Alphanumeric, 25».
 			,'OWNERTOWN' => $ba->getCity()
-			// 2017-08-19 «Customer postcode or ZIP code». Optional.
+			// 2017-08-19 «Customer postcode or ZIP code». Optional. «Alphanumeric, 10».
 			,'OWNERZIP' => $ba->getPostcode()
 		];
 	}
