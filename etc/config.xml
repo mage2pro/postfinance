@@ -7,10 +7,14 @@
 		<df_payment>
 			<post_finance>
 				<description>{store.domain} // {customer.name} // {order.id}</description>
+<!-- 2017-08-20 It is the default value in the PostFinance merchant interface: https://mage2.pro/t/4362 -->
+				<liveHashAlgorithm>sha1</liveHashAlgorithm>
 <!-- 2017-08-20 It is the default value in the PostFinance merchant interface: https://mage2.pro/t/4361 -->
 				<liveHashParameters>all</liveHashParameters>
 				<requireBillingAddress>1</requireBillingAddress>
 				<payment_action>authorize_capture</payment_action>
+<!-- 2017-08-20 It is the default value in the PostFinance merchant interface: https://mage2.pro/t/4362 -->
+				<testHashAlgorithm>sha1</testHashAlgorithm>
 <!-- 2017-08-20 It is the default value in the PostFinance merchant interface: https://mage2.pro/t/4361 -->
 				<testHashParameters>all</testHashParameters>
 				<title>PostFinance</title>

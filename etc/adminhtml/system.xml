@@ -129,6 +129,21 @@
 					</depends>
 				</field>
 				<field
+					id='testHashAlgorithm'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='8'
+					translate='label'
+					type='select'
+				>
+					<label>[Test] Hash algorithm</label>
+					<source_model>Dfe\PostFinance\Source\Hash\Algorithm</source_model>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4362' target='_blank' title='[PostFinance] How to setup the «Hash algorithm» option?'>How to choose the right value?</a>]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>1</field>
+					</depends>
+				</field>
+				<field
 					id='liveMerchantID'
 					translate='label'
 					type='text'
@@ -187,6 +202,21 @@
 					<label>[Live] Compose the string to be hashed by concatenating the value of</label>
 					<source_model>Dfe\PostFinance\Source\Hash\Parameters</source_model>
 					<comment><![CDATA[<a href='https://mage2.pro/t/4361' target='_blank' title='[PostFinance] How to setup the «Compose the string to be hashed by concatenating the value of» option?'>How to choose the right value?</a>]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>0</field>
+					</depends>
+				</field>
+				<field
+					id='liveHashAlgorithm'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='14'
+					translate='label'
+					type='select'
+				>
+					<label>[Live] Hash algorithm</label>
+					<source_model>Dfe\PostFinance\Source\Hash\Algorithm</source_model>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4362' target='_blank' title='[PostFinance] How to setup the «Hash algorithm» option?'>How to choose the right value?</a>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
 						<field id='test'>0</field>

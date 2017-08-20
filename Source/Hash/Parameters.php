@@ -1,6 +1,8 @@
 <?php
 namespace Dfe\PostFinance\Source\Hash;
 // 2017-08-20
+// `[PostFinance] How to setup the «Compose the string to be hashed by concatenating the value of» option?`
+// https://mage2.pro/t/4361
 final class Parameters extends \Df\Config\Source {
 	/**
 	 * 2017-08-20
