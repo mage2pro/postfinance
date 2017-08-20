@@ -1,7 +1,8 @@
 <?php
 namespace Dfe\PostFinance;
-/**
- * 2017-08-18
+/** 
+ * 2017-08-20
+ * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#shainsignature
  * @see \Dfe\PostFinance\Signer\Request
  * @see \Dfe\PostFinance\Signer\Response
  * @method Settings s()

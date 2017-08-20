@@ -2,4 +2,20 @@
 namespace Dfe\PostFinance;
 // 2017-08-18
 /** @method static Settings s() */
-final class Settings extends \Df\Payment\Settings {}
+final class Settings extends \Df\Payment\Settings {
+	/**
+	 * 2017-08-20 «SHA-IN pass phrase».
+	 * `[PostFinance] How to setup my «SHA-IN pass phrase»?`: https://mage2.pro/t/4355
+	 * @used-by \Dfe\Robokassa\Signer\Request::values()
+	 * @return string
+	 */
+	function password1() {return $this->testableP();}
+
+	/**
+	 * 2017-08-20 «SHA-OUT pass phrase».
+	 * `[PostFinance] How to setup my «SHA-OUT pass phrase»?`: https://mage2.pro/t/4359
+	 * @used-by \Dfe\Robokassa\Signer\Response::values()
+	 * @return string
+	 */
+	function password2() {return $this->testableP();}
+}
