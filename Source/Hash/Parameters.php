@@ -16,6 +16,8 @@ final class Parameters extends \Df\Config\Source {
 	/**
 	 * 2017-08-20
 	 * @used-by map()
+	 * @used-by https://github.com/mage2pro/postfinance/blob/0.0.7/etc/config.xml#L10
+	 * @used-by https://github.com/mage2pro/postfinance/blob/0.0.7/etc/config.xml#L13
 	 * @var string
 	 */
 	const ALL = 'all';
