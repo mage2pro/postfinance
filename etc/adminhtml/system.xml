@@ -73,7 +73,7 @@
 					showInWebsite='1'
 					showInStore='1'
 				>
-					<label>Test PSPID</label>
+					<label>[Test] PSPID</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/4349' target='_blank'>What is get it?</a>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
@@ -88,7 +88,7 @@
 					translate='label'
 					type='obscure'
 				>
-					<label>Test SHA-IN pass phrase</label>
+					<label>[Test] SHA-IN pass phrase</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/4355' target='_blank'>How to get it?</a>]]></comment>
 					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
 					<depends>
@@ -104,7 +104,7 @@
 					translate='label'
 					type='obscure'
 				>
-					<label>Test SHA-OUT pass phrase</label>
+					<label>[Test] SHA-OUT pass phrase</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/4359' target='_blank'>How to get it?</a>]]></comment>
 					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
 					<depends>
@@ -122,7 +122,7 @@
 					showInWebsite='1'
 					showInStore='1'
 				>
-					<label>Live PSPID</label>
+					<label>[Live] PSPID</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/4349' target='_blank'>What is get it?</a>]]></comment>
 					<depends>
 						<field id='enable'>1</field>
@@ -137,7 +137,7 @@
 					translate='label'
 					type='obscure'
 				>
-					<label>Live SHA-IN pass phrase</label>
+					<label>[Live] SHA-IN pass phrase</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/4355' target='_blank'>How to get it?</a>]]></comment>
 					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
 					<depends>
@@ -153,7 +153,7 @@
 					translate='label'
 					type='obscure'
 				>
-					<label>Live SHA-OUT pass phrase</label>
+					<label>[Live] SHA-OUT pass phrase</label>
 					<comment><![CDATA[<a href='https://mage2.pro/t/4359' target='_blank'>How to get it?</a>]]></comment>
 					<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
 					<depends>
