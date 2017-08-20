@@ -7,8 +7,10 @@
 		<df_payment>
 			<post_finance>
 				<description>{store.domain} // {customer.name} // {order.id}</description>
+				<liveHashParameters>all</liveHashParameters>
 				<requireBillingAddress>1</requireBillingAddress>
 				<payment_action>authorize_capture</payment_action>
+				<testHashParameters>all</testHashParameters>
 				<title>PostFinance</title>
 				<title_backend>PostFinance</title_backend>
 			</post_finance>

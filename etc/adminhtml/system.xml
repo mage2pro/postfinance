@@ -114,10 +114,25 @@
 					<validate>required-entry</validate>
 				</field>
 				<field
+					id='testHashParameters'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='7'
+					translate='label'
+					type='select'
+				>
+					<label>[Test] Compose the string to be hashed by concatenating the value of</label>
+					<source_model>Dfe\PostFinance\Source\Hash\Parameters</source_model>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4361' target='_blank' title='[PostFinance] How to setup the «Compose the string to be hashed by concatenating the value of» option?'>How to choose the right value?</a>]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>1</field>
+					</depends>
+				</field>
+				<field
 					id='liveMerchantID'
 					translate='label'
 					type='text'
-					sortOrder='7'
+					sortOrder='10'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -133,7 +148,7 @@
 				<field
 					id='livePassword1'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='8'
+					sortOrder='11'
 					translate='label'
 					type='obscure'
 				>
@@ -149,7 +164,7 @@
 				<field
 					id='livePassword2'
 					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='9'
+					sortOrder='12'
 					translate='label'
 					type='obscure'
 				>
@@ -163,10 +178,25 @@
 					<validate>required-entry</validate>
 				</field>
 				<field
+					id='liveHashParameters'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='13'
+					translate='label'
+					type='select'
+				>
+					<label>[Live] Compose the string to be hashed by concatenating the value of</label>
+					<source_model>Dfe\PostFinance\Source\Hash\Parameters</source_model>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4361' target='_blank' title='[PostFinance] How to setup the «Compose the string to be hashed by concatenating the value of» option?'>How to choose the right value?</a>]]></comment>
+					<depends>
+						<field id='enable'>1</field>
+						<field id='test'>0</field>
+					</depends>
+				</field>
+				<field
 					id='description'
 					translate='label'
 					type='textarea'
-					sortOrder='10'
+					sortOrder='16'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -185,7 +215,7 @@ because the value can contain variables, so do not know the real length here. --
 					id='requireBillingAddress'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
-					sortOrder='16'
+					sortOrder='17'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
