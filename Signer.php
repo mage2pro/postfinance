@@ -16,6 +16,11 @@ namespace Dfe\PostFinance;
  * *) For extra safety, we request that you use different SHA passphrases in test and production.
  * If they are found to be identical, your TEST passphrase will be changed by our system
  * (you do get a notification mail for this).
+ * 2017-08-21
+ * «List of parameters to be included in SHA-IN calculation»:
+ * https://e-payment-postfinance.v-psp.com/~/media/kdb/integration%20guides/sha-in_params.ashx?la=en
+ * «SHA-OUT Parameter list»:
+ * https://e-payment-postfinance.v-psp.com/~/media/kdb/integration%20guides/sha-out_params.ashx?la=en
  * @see \Dfe\PostFinance\Signer\Request
  * @see \Dfe\PostFinance\Signer\Response
  * @method Settings s()

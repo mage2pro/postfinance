@@ -34,7 +34,9 @@
 				>
 					<label>Enable?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
-					<comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/postfinance' target='_blank'>PostFinance</a>» payment extension?]]></comment>
+					<comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/postfinance' target='_blank'>PostFinance</a>» payment extension?
+<br/>You should setup the «<a href='https://mage2.pro/t/4361' target='_blank'>Compose the string to be hashed by concatenating the value of</a>» option in the PostFinance merchant interface.
+]]></comment>
 				</field>
 				<field
 					id='title'
@@ -114,21 +116,6 @@
 					<validate>required-entry</validate>
 				</field>
 				<field
-					id='testHashParameters'
-					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='7'
-					translate='label'
-					type='select'
-				>
-					<label>[Test] Compose the string to be hashed by concatenating the value of</label>
-					<source_model>Dfe\PostFinance\Source\Hash\Parameters</source_model>
-					<comment><![CDATA[<a href='https://mage2.pro/t/4361' target='_blank' title='[PostFinance] How to setup the «Compose the string to be hashed by concatenating the value of» option?'>How to choose the right value?</a>]]></comment>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>1</field>
-					</depends>
-				</field>
-				<field
 					id='testHashAlgorithm'
 					showInDefault='1' showInStore='1' showInWebsite='1'
 					sortOrder='8'
@@ -191,21 +178,6 @@
 						<field id='test'>0</field>
 					</depends>
 					<validate>required-entry</validate>
-				</field>
-				<field
-					id='liveHashParameters'
-					showInDefault='1' showInStore='1' showInWebsite='1'
-					sortOrder='13'
-					translate='label'
-					type='select'
-				>
-					<label>[Live] Compose the string to be hashed by concatenating the value of</label>
-					<source_model>Dfe\PostFinance\Source\Hash\Parameters</source_model>
-					<comment><![CDATA[<a href='https://mage2.pro/t/4361' target='_blank' title='[PostFinance] How to setup the «Compose the string to be hashed by concatenating the value of» option?'>How to choose the right value?</a>]]></comment>
-					<depends>
-						<field id='enable'>1</field>
-						<field id='test'>0</field>
-					</depends>
 				</field>
 				<field
 					id='liveHashAlgorithm'
