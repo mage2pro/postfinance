@@ -21,26 +21,17 @@ namespace Dfe\PostFinance;
  * https://e-payment-postfinance.v-psp.com/~/media/kdb/integration%20guides/sha-in_params.ashx?la=en
  * «SHA-OUT Parameter list»:
  * https://e-payment-postfinance.v-psp.com/~/media/kdb/integration%20guides/sha-out_params.ashx?la=en
- * @see \Dfe\PostFinance\Signer\Request
- * @see \Dfe\PostFinance\Signer\Response
  * @method Settings s()
  */
-abstract class Signer extends \Df\PaypalClone\Signer {
+final class Signer extends \Df\PaypalClone\Signer {
 	/**
-	 * 2017-08-18
-	 * @used-by sign()
-	 * @see \Dfe\PostFinance\Signer\Request::values()
-	 * @see \Dfe\PostFinance\Signer\Response::values()
-	 * @return string[]
-	 */
-	abstract protected function values();
-
-	/**
-	 * 2017-08-18
+	 * 2017-08-21
 	 * @override
 	 * @see \Df\PaypalClone\Signer::sign()
 	 * @used-by \Df\PaypalClone\Signer::_sign()
 	 * @return string
 	 */
-	final protected function sign() {return implode($this->values());}
+	final protected function sign() {
+		return '';
+	}
 }
