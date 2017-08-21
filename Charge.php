@@ -83,6 +83,9 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * The system checks that a payment has not been requested twice for the same order.
 	 * The ORDERID has to be assigned dynamically.»
 	 * Required. Alphanumeric (40).
+	 * 2017-08-21
+	 * Despite the documentation says that an order number should be alphanumeric,
+	 * really the numbers like «ORD-2017/08-01050» are allowed.
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_RequestId()
 	 * @used-by \Df\PaypalClone\Charge::p()
@@ -97,7 +100,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @used-by \Df\PaypalClone\Charge::p()
 	 * @return string
 	 */
-	protected function k_Signature() {return '';}
+	protected function k_Signature() {return 'SHASIGN';}
 
 	/**
 	 * 2017-08-18
