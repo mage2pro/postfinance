@@ -34,6 +34,12 @@
 				>
 					<label>Enable?</label>
 					<backend_model>Df\Config\Backend\Checkbox</backend_model>
+<!-- 2017-08-21
+I do not prodive a control for the «Compose the string to be hashed by concatenating the value of» option
+because its «Main parameters only» value is legacy and is not ever mentioned in the PostFinance documentation.
+I have found its description and meaning in an Ogone module:
+https://github.com/marlon-be/marlon-ogone/blob/3.1.3/lib/Ogone/ShaComposer/LegacyShaComposer.php#L43-L64
+-->
 					<comment><![CDATA[Enable the «<a href='https://mage2.pro/c/extensions/postfinance' target='_blank'>PostFinance</a>» payment extension?
 <br/>You should setup the «<a href='https://mage2.pro/t/4361' target='_blank'>Compose the string to be hashed by concatenating the value of</a>» option in the PostFinance merchant interface.
 ]]></comment>
