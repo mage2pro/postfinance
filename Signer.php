@@ -54,14 +54,31 @@ final class Signer extends \Df\PaypalClone\Signer {
 		/**
 		 * 2017-08-21
 		 * SHA-IN:
-		 * «All parameter names should be in UPPERCASE (to avoid any case confusion).»
+		 * «All parameter names should be in UPPERCASE (to avoid any case confusion)».
 		 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/security-pre-payment-check#shainsignature_creatingthestring
 		 * SHA-OUT:
 		 * «Even though some parameters are (partially) returned in lower case by our system,
-		 * for the SHA-OUT calculation each parameter must be put in upper case.»
+		 * for the SHA-OUT calculation each parameter must be put in upper case».
 		 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback#redirectionwithdatabaseupdate_shaout
+		 * The `marlon-ogone` library:
+		 * 		$parameters = array_change_key_case($parameters, CASE_UPPER);
+		 * https://github.com/marlon-be/marlon-ogone/blob/3.1.3/lib/Ogone/ParameterFilter/GeneralParameterFilter.php#L18
 		 */
 		$p = dfa_key_uc($p);
+		/**
+		 * 2017-08-21
+		 * SHA-IN, SHA-OUT:
+		 * «Parameters that do not have a value should NOT be included in the string to hash».
+		 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/security-pre-payment-check#shainsignature_creatingthestring
+		 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback#redirectionwithdatabaseupdate_shaout
+		 * The `marlon-ogone` library:
+		 *		array_walk($parameters, 'trim');
+		 *		$parameters = array_filter($parameters, function ($value) {
+		 *			return (bool) strlen($value);
+		 *		});
+		 * https://github.com/marlon-be/marlon-ogone/blob/3.1.3/lib/Ogone/ParameterFilter/GeneralParameterFilter.php#L19-L23
+		 */
+		$p = df_clean($p);
 		return '';
 	}
 }
