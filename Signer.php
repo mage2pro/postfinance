@@ -47,9 +47,13 @@ final class Signer extends \Df\PaypalClone\Signer {
 	 * @return string
 	 */
 	final protected function sign() {
+		$s = $this->s(); /** @var Settings $s */
 		$p = $this->v(); /** @var array(string => mixed) $p */
-		// 2017-08-21 «SHA signature calculated by our system».
+		// 2017-08-21 Whether the result should be SHA-IN or SHA-OUT.
+		// 2017-08-21 `SHASIGN`: «SHA signature calculated by our system».
 		// https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback#feedbackparameters
+		/** @var string $password */
+		$password = isset($p['SHASIGN']) ? $s->password2() : $s->password1();
 		unset($p['SHASIGN']);
 		/**
 		 * 2017-08-21
@@ -94,6 +98,32 @@ final class Signer extends \Df\PaypalClone\Signer {
 		 * https://github.com/mage2pro/allpay/blob/1.6.20/Signer.php#L18-L41
 		 */
 		ksort($p);
-		return '';
+		/**
+		 * 2017-08-21
+		 * Note 1. SHA-IN.
+		 * «The string that will be hashed is constructed by concatenating the values of the fields
+		 * sent with the order, sorted alphabetically, in the format ‘PARAMETER=value’.
+		 * Each parameter with its value is followed by a passphrase.».
+		 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/security-pre-payment-check#shainsignature_creatingthestring
+		 * Note 2. SHA-OUT.
+		 * «The string to hash is constructed by concatenating the values of the fields sent with the order
+		 * (sorted alphabetically, in the format ‘parameter=value’), followed by a passphrase.».
+		 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback#redirectionwithdatabaseupdate_shaout
+		 * Note 3. The `marlon-ogone` library:
+		 *		$shaString = '';
+		 *		foreach ($parameters as $key => $value) {
+		 *			$shaString .= $key . '=' . $value . $this->passphrase;
+		 *		}
+		 *		return strtoupper(hash($this->hashAlgorithm, $shaString));
+		 * https://github.com/marlon-be/marlon-ogone/blob/3.1.3/lib/Ogone/ShaComposer/AllParametersShaComposer.php#L54-L60
+		 * Note 4. The `marlon-ogone` library uses @see strtoupper(),
+		 * but it is never mentioned in the documentation.
+		 * Nevertheless, I have decided to use it too.
+		 * @see hash() function's result is lowercased:
+		 * https://github.com/mage2pro/postfinance/blob/0.0.8/Source/Hash/Algorithm.php#L9-L11
+		 */
+		return strtoupper(hash($s->hashAlgorithm(), df_map_k(function($k, $v) use($password){return
+			"$k=$v$password"
+		;}, $p)));
 	}
 }
