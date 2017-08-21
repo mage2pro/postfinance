@@ -79,6 +79,21 @@ final class Signer extends \Df\PaypalClone\Signer {
 		 * https://github.com/marlon-be/marlon-ogone/blob/3.1.3/lib/Ogone/ParameterFilter/GeneralParameterFilter.php#L19-L23
 		 */
 		$p = df_clean($p);
+		/**
+		 * 2017-08-21
+		 * Note 1. SHA-IN. «All parameters have to be arranged alphabetically».
+		 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/security-pre-payment-check#shainsignature_creatingthestring
+		 * Note 2. SHA-OUT. «All parameters need to be sorted alphabetically».
+		 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback#redirectionwithdatabaseupdate_shaout
+		 * Note 3. The `marlon-ogone` library:
+		 *		ksort($parameters);
+		 * https://github.com/marlon-be/marlon-ogone/blob/3.1.3/lib/Ogone/ShaComposer/AllParametersShaComposer.php#L52
+		 * Note 34.
+		 * We can use @uses ksort() here, because the keys are already uppercased.
+		 * @see \Dfe\AllPay\Signer::sign()
+		 * https://github.com/mage2pro/allpay/blob/1.6.20/Signer.php#L18-L41
+		 */
+		ksort($p);
 		return '';
 	}
 }
