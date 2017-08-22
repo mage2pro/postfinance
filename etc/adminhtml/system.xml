@@ -201,10 +201,32 @@ https://github.com/marlon-be/marlon-ogone/blob/3.1.3/lib/Ogone/ShaComposer/Legac
 					</depends>
 				</field>
 				<field
+					id='urlCustomerReturn'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='15'
+					translate='label'
+					type='Df\Payment\FE\CustomerReturn'
+				>
+					<label>Customer Return URL</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4362' target='_blank' title='[PostFinance] How to setup the «Customer Return URL»?'>Set it in your PostFinance merchant interface</a>.]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
+					id='webhook'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='16'
+					translate='label'
+					type='Df\Framework\Form\Element\Webhook'
+				>
+					<label>Webhook URL</label>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4362' target='_blank' title='[PostFinance] How to setup the «Webhook URL»?'>Set it in your PostFinance merchant interface</a>.]]></comment>
+					<depends><field id='enable'>1</field></depends>
+				</field>
+				<field
 					id='description'
 					translate='label'
 					type='textarea'
-					sortOrder='16'
+					sortOrder='17'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -223,7 +245,7 @@ because the value can contain variables, so do not know the real length here. --
 					id='requireBillingAddress'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
-					sortOrder='17'
+					sortOrder='18'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
