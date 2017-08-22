@@ -208,7 +208,7 @@ https://github.com/marlon-be/marlon-ogone/blob/3.1.3/lib/Ogone/ShaComposer/Legac
 					type='Df\Payment\FE\CustomerReturn'
 				>
 					<label>Customer Return URL</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/4362' target='_blank' title='[PostFinance] How to setup the «Customer Return URL»?'>Set it in your PostFinance merchant interface</a>.]]></comment>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4372' target='_blank' title='[PostFinance] How to setup the «Customer Return URL»?'>Set it in your PostFinance merchant interface</a>.]]></comment>
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
@@ -219,7 +219,7 @@ https://github.com/marlon-be/marlon-ogone/blob/3.1.3/lib/Ogone/ShaComposer/Legac
 					type='Df\Framework\Form\Element\Webhook'
 				>
 					<label>Webhook URL</label>
-					<comment><![CDATA[<a href='https://mage2.pro/t/4362' target='_blank' title='[PostFinance] How to setup the «Webhook URL»?'>Set it in your PostFinance merchant interface</a>.]]></comment>
+					<comment><![CDATA[<a href='https://mage2.pro/t/4373' target='_blank' title='[PostFinance] How to setup the «Webhook URL»?'>Set it in your PostFinance merchant interface</a>.]]></comment>
 					<depends><field id='enable'>1</field></depends>
 				</field>
 				<field
