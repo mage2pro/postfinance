@@ -1,7 +1,7 @@
 The extension integrates your Magento 2 store with the **[PostFinance](https://www.postfinance.ch)** payment service (Switzerland).  
 
 ## Settings
-![](https://mage2.pro/uploads/default/original/2X/2/2c965ebef8f782aa5e4dd7aebcaae2765889e0db.png)
+![](https://mage2.pro/uploads/default/original/2X/4/4e4c87f313d6b99c507e979a6a77f5a8a2b5922a.png)
 
 ## Screenshots
 ### A payment form
