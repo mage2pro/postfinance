@@ -111,8 +111,41 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 */
 	protected function pCharge() {
 		$ba = $this->addressB(); /** @var OA $oa */
-		$s = $this->s(); /** @var Settings $s */
 		return [
+			/**
+			 * 2017-08-22
+			 * «Integrate with PostFinance e-Commerce» → «7. Transaction feedback» →
+			 * «7.2. Redirection depending on transaction result»:
+			 *
+			 * «There are four URLs which our system can redirect the customer to after a transaction,
+			 * depending on the result.
+			 * These are "ACCEPTURL", "EXCEPTIONURL", "CANCELURL" and "DECLINEURL".
+			 * The URLs can be configured or submitted as follows:
+			 * <...>
+			 * Submission of the URLs in the hidden fields of the order form:
+			 *	<input type="hidden" name="ACCEPTURL" value="">
+			 *	<input type="hidden" name="DECLINEURL" value="">
+			 *	<input type="hidden" name="EXCEPTIONURL" value="">
+			 *	<input type="hidden" name="CANCELURL" value="">
+			 *
+			 * `ACCEPTURL`
+			 * URL of the web page to display to the customer when the payment has been authorised (status 5),
+			 * stored (status 4), accepted (status 9) or is waiting to be accepted (pending status 41, 51 or 91).
+			 *
+			 * `CANCELURL`
+			 * URL of the web page to display to the customer when he cancels the payment (status 1).
+			 * If this field is empty, the customer will be redirected to the DECLINEURL instead.
+			 *
+			 * `DECLINEURL`
+			 * URL of the web page to show the customer when the acquirer declines the authorisation (status 2 or 93)
+			 * more than the maximum permissible number of times.
+			 *
+			 * `EXCEPTIONURL`
+			 * URL of the web page to display to the customer when the payment result is uncertain (status 52 or 92).
+			 * If this field is empty, the customer will be redirected to the ACCEPTURL instead.»
+			 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback#basicredirection
+			 */
+			'ACCEPTURL' => $this->customerReturnRemote()
 			/**
 			 * 2017-08-19
 			 * *) Integrate with PostFinance e-Commerce:
@@ -135,7 +168,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 * https://mage2.pro/t/4351
 			 * https://mage2.pro/t/4352
 			 */
-			'CN' => $this->customerName()
+			,'CN' => $this->customerName()
 			/**
 			 * 2017-08-19
 			 * *) Integrate with PostFinance e-Commerce: «Customer street name and number». Optional.
@@ -257,6 +290,8 @@ final class Charge extends \Df\PaypalClone\Charge {
 		 * If this field is empty, the customer will be redirected to the ACCEPTURL instead.»
 		 * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback#basicredirection
 		 */
-		] + array_fill_keys(['ACCEPTURL', 'CANCELURL', 'DECLINEURL', 'EXCEPTIONURL'], $this->customerReturnRemote());
+		] + array_fill_keys(['CANCELURL', 'DECLINEURL', 'EXCEPTIONURL'],
+			$this->customerReturnRemoteWithFailure()
+		);
 	}
 }
