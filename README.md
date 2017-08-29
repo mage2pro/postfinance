@@ -10,6 +10,7 @@ The extension integrates your Magento 2 store with the **[PostFinance](https://w
   - [The **PostFinance E-finance** payment interface](https://mage2.pro/t/topic/4399) (an online banking)
   - [The **PostFinance Card** payment interface](https://mage2.pro/t/topic/4394)
   - [The **TWINT** payment interface](https://mage2.pro/t/topic/4395) (a Switzerland’s digital wallet)
+  - [The **PayPal** payment interface in the test mode](https://mage2.pro/t/topic/4416)  
 
 ## How to buy
 The extension is not released yet, so there is no way to buy it just now.  
