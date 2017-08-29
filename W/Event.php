@@ -11,15 +11,15 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  */
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
-	 * 2017-08-29
-	 * @override The type of the current transaction.
+	 * 2017-08-29 The type of the current transaction.
+	 * @override
 	 * @see \Df\PaypalClone\W\Event::ttCurrent()
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
 	 */
 	function ttCurrent() {return '';}
 
 	/**
-	 * 2017-08-29
+	 * 2017-08-29 «Payment reference in our system».
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_idE()
 	 * @used-by \Df\PaypalClone\W\Event::idE()
@@ -28,8 +28,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 	protected function k_idE() {return '';}
 
 	/**
-	 * 2017-08-29
-	 * «Your order reference».
+	 * 2017-08-29 «Your order reference».
 	 * Despite the documentation spells it in the upper case (`ORDERID`),
 	 * in my practice I always receive it as `orderID`: https://mage2.pro/tags/postfinance-webhook
 	 * @override
