@@ -25,7 +25,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @used-by \Df\PaypalClone\W\Event::idE()
 	 * @return string
 	 */
-	protected function k_idE() {return '';}
+	protected function k_idE() {return 'PAYID';}
 
 	/**
 	 * 2017-08-29 «Your order reference».
@@ -39,7 +39,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 	protected function k_pid() {return 'orderID';}
 
 	/**
-	 * 2017-08-29 «SHA signature calculated by our system (if SHA-OUT configured).»
+	 * 2017-08-29 «SHA signature calculated by our system (if SHA-OUT configured)».
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_signature()
 	 * @used-by \Df\PaypalClone\W\Event::signatureProvided()
@@ -48,13 +48,14 @@ final class Event extends \Df\PaypalClone\W\Event {
 	protected function k_signature() {return 'SHASIGN';}
 
 	/**
-	 * 2017-08-29
+	 * 2017-08-29 «Transaction status».
+	 * [PostFinance] Payment statuses: https://mage2.pro/t/4343
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_status()
 	 * @used-by \Df\PaypalClone\W\Event::status()
 	 * @return string
 	 */
-	protected function k_status() {return '';}
+	protected function k_status() {return 'STATUS';}
 
 	/**
 	 * 2017-08-29
