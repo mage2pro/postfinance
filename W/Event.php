@@ -5,6 +5,8 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  * 2017-08-29
  * «Integrate with PostFinance e-Commerce» → «7. Transaction feedback»
  * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback
+ * «7.5 Feedback parameters»:
+ * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback#feedbackparameters
  */
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
@@ -34,13 +36,13 @@ final class Event extends \Df\PaypalClone\W\Event {
 	protected function k_pid() {return '';}
 
 	/**
-	 * 2017-08-29
+	 * 2017-08-29 «SHA signature calculated by our system (if SHA-OUT configured).»
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_signature()
 	 * @used-by \Df\PaypalClone\W\Event::signatureProvided()
 	 * @return string
 	 */
-	protected function k_signature() {return '';}
+	protected function k_signature() {return 'SHASIGN';}
 
 	/**
 	 * 2017-08-29
