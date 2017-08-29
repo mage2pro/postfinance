@@ -3,10 +3,11 @@ namespace Dfe\PostFinance\W;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
 /**
  * 2017-08-29
- * «Integrate with PostFinance e-Commerce» → «7. Transaction feedback»
+ * Note 1. «Integrate with PostFinance e-Commerce» → «7. Transaction feedback»
  * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback
- * «7.5 Feedback parameters»:
+ * Note 2. «7.5 Feedback parameters»:
  * https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback#feedbackparameters
+ * Note 3. Some examples of webhook notifications: https://mage2.pro/tags/postfinance-webhook
  */
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
@@ -28,12 +29,15 @@ final class Event extends \Df\PaypalClone\W\Event {
 
 	/**
 	 * 2017-08-29
+	 * «Your order reference».
+	 * Despite the documentation spells it in the upper case (`ORDERID`),
+	 * in my practice I always receive it as `orderID`: https://mage2.pro/tags/postfinance-webhook
 	 * @override
 	 * @see \Df\Payment\W\Event::k_pid()
 	 * @used-by \Df\Payment\W\Event::pid()
 	 * @return string
 	 */
-	protected function k_pid() {return '';}
+	protected function k_pid() {return 'orderID';}
 
 	/**
 	 * 2017-08-29 «SHA signature calculated by our system (if SHA-OUT configured).»
