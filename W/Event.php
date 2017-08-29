@@ -56,13 +56,4 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @return string
 	 */
 	protected function k_status() {return 'STATUS';}
-
-	/**
-	 * 2017-08-29
-	 * @override
-	 * @see \Df\PaypalClone\W\Event::k_statusT()
-	 * @used-by \Df\PaypalClone\W\Event::logTitleSuffix()
-	 * @return string|null
-	 */
-	protected function k_statusT() {return '';}
 }
