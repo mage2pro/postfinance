@@ -12,12 +12,17 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
 	 * 2017-08-30
+	 * `[PostFinance] Payment statuses`: https://mage2.pro/t/4343
+	 * https://e-payment-postfinance.v-psp.com/en/en/guides/user%20guides/statuses-and-errors
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::isSuccessful()
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
 	 * @return bool
 	 */
-	function isSuccessful() {return true;}
+	function isSuccessful() {
+		$s = strval($this->status()); /** @var string $s */
+		return !in_array($s[0], ['0', '1', '2']) && !in_array($s, ['57', '59', '63', '73', '83', '93']);
+	}
 
 	/**
 	 * 2017-08-29 The type of the current transaction.
@@ -59,7 +64,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 
 	/**
 	 * 2017-08-29 «Transaction status».
-	 * [PostFinance] Payment statuses: https://mage2.pro/t/4343
+	 * `[PostFinance] Payment statuses`: https://mage2.pro/t/4343
+	 * https://e-payment-postfinance.v-psp.com/en/en/guides/user%20guides/statuses-and-errors
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_status()
 	 * @used-by \Df\PaypalClone\W\Event::status()
