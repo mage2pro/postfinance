@@ -11,10 +11,20 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  */
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
+	 * 2017-08-30
+	 * @override
+	 * @see \Df\PaypalClone\W\Event::isSuccessful()
+	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
+	 * @return bool
+	 */
+	function isSuccessful() {return true;}
+
+	/**
 	 * 2017-08-29 The type of the current transaction.
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::ttCurrent()
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
+	 * @used-by \Df\PaypalClone\W\Nav::id()
 	 */
 	function ttCurrent() {return '';}
 
