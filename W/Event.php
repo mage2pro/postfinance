@@ -19,10 +19,9 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
 	 * @return bool
 	 */
-	function isSuccessful() {
-		$s = strval($this->status()); /** @var string $s */
-		return !in_array($s[0], ['0', '1', '2']) && !in_array($s, ['57', '59', '63', '73', '83', '93']);
-	}
+	function isSuccessful() {return
+		!in_array($this->s0(), [0, 1, 2]) && !in_array(intval($this->status()), [57, 59, 63, 73, 83, 93])
+	;}
 
 	/**
 	 * 2017-08-29 The type of the current transaction.
@@ -31,7 +30,14 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
 	 * @used-by \Df\PaypalClone\W\Nav::id()
 	 */
-	function ttCurrent() {return '';}
+	function ttCurrent() {return !$this->isSuccessful() ? parent::ttCurrent() : dfa([
+		4 => self::T_INFO
+		,5 => self::T_AUTHORIZE
+		,6 => self::T_VOID  // 2017-08-30 @todo
+		,7 => self::T_INFO  // 2017-08-30 @todo
+		,8 => self::T_REFUND // 2017-08-30 @todo
+		,9 => self::T_CAPTURE
+	], $this->s0());}
 
 	/**
 	 * 2017-08-29 «Payment reference in our system».
@@ -72,4 +78,12 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @return string
 	 */
 	protected function k_status() {return 'STATUS';}
+
+	/**
+	 * 2017-08-30
+	 * @used-by isSuccessful()
+	 * @used-by ttCurrent()
+	 * @return int
+	 */
+	private function s0() {return dfc($this, function() {return intval(strval($this->status())[0]);});}
 }
