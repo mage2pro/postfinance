@@ -14,6 +14,10 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by \Df\Payment\Block\Info::_prepareSpecificInformation()
 	 */
 	final protected function prepare() {
+		$e = $this->e(); /** @var Event $e */
 		$this->si('Payment Option', $this->choiceT());
+		if ($e->isBankCard()) {
+			$this->si(['Card Number' => $e->cardNumber()]);
+		}
 	}
 }

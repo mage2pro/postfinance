@@ -13,6 +13,21 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
 	 * 2017-09-01
+	 * `BRAND`: «Card brand (our system derives this from the card number)».
+	 * `CARDNO`: «Masked card number».
+	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
+	 * @return string
+	 */
+	function cardNumber() {
+		df_assert($this->isBankCard());
+		return sprintf("···· %s ({$this->r('BRAND')})", df_trim_left($this->r('CARDNO'), 'X'));
+	}
+
+	/**
+	 * 2017-09-01
+	 * @used-by cardNumber()
+	 * @used-by optionTitle()
+	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
 	 * @return bool
 	 */
 	function isBankCard() {return 'CreditCard' === $this->option();}
@@ -32,6 +47,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 
 	/**
 	 * 2017-09-01
+	 * `BRAND`: «Card brand (our system derives this from the card number)».
 	 * @used-by \Dfe\PostFinance\Choice::title()
 	 * @return string|Phrase
 	 */
@@ -98,8 +114,9 @@ final class Event extends \Df\PaypalClone\W\Event {
 
 	/**
 	 * 2017-09-01
-	 * `The payment method codes (the possible values of the «PM» and «BRAND» webhook notification parameters)`:
-	 * https://mage2.pro/t/4426
+	 * Note 1. «Payment method».
+	 * Note 2. `The payment method codes (the possible values of the «PM» and «BRAND»
+	 * webhook notification parameters)`: https://mage2.pro/t/4426
 	 * @used-by isBankCard()
 	 * @used-by optionTitle()
 	 * @return int
