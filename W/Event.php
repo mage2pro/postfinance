@@ -18,14 +18,12 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
 	 * @return string
 	 */
-	function cardNumber() {
-		df_assert($this->isBankCard());
-		return sprintf("···· %s ({$this->r('BRAND')})", df_trim_left($this->r('CARDNO'), 'X'));
-	}
+	function cardNumber() {return dfp_card_format_last4(
+		df_trim_left($this->r('CARDNO'), 'X'), $this->r('BRAND')
+	);}
 
 	/**
 	 * 2017-09-01
-	 * @used-by cardNumber()
 	 * @used-by optionTitle()
 	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
 	 * @return bool
