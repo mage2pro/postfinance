@@ -13,6 +13,14 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
 	 * 2017-09-01
+	 * `CN`: «Cardholder/customer name».
+	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
+	 * @return string
+	 */
+	function cardholder() {return $this->r('CN');}
+
+	/**
+	 * 2017-09-01
 	 * `BRAND`: «Card brand (our system derives this from the card number)».
 	 * `CARDNO`: «Masked card number».
 	 * @used-by \Dfe\PostFinance\Block\Info::prepare()

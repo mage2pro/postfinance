@@ -22,7 +22,7 @@ class Info extends \Df\Payment\Block\Info {
 		], $e->idE()));
 		$this->si('Payment Option', $this->choiceT());
 		if ($e->isBankCard()) {
-			$this->si(['Card Number' => $e->cardNumber()]);
+			$this->si(['Card Number' => $e->cardNumber(), 'Cardholder' => $e->cardholder()]);
 		}
 	}
 }
