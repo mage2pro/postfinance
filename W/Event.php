@@ -1,5 +1,6 @@
 <?php
 namespace Dfe\PostFinance\W;
+use Magento\Framework\Phrase;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
 /**
  * 2017-08-29
@@ -11,6 +12,12 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  */
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
+	 * 2017-09-01
+	 * @return bool
+	 */
+	function isBankCard() {return 'CreditCard' === $this->option();}
+
+	/**
 	 * 2017-08-30
 	 * `[PostFinance] Payment statuses`: https://mage2.pro/t/4343
 	 * https://e-payment-postfinance.v-psp.com/en/en/guides/user%20guides/statuses-and-errors
@@ -21,6 +28,16 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 */
 	function isSuccessful() {return
 		!in_array($this->s0(), [0, 1, 2]) && !in_array(intval($this->status()), [57, 59, 63, 73, 83, 93])
+	;}
+
+	/**
+	 * 2017-09-01
+	 * @used-by \Dfe\PostFinance\Choice::title()
+	 * @return string|Phrase
+	 */
+	function optionTitle() {return $this->isBankCard()
+		? __('Bank Card (%1)', $this->r('BRAND'))
+		: dftr($this->option(), df_module_csv($this, 'labels'))
 	;}
 
 	/**
@@ -78,6 +95,16 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @return string
 	 */
 	protected function k_status() {return 'STATUS';}
+
+	/**
+	 * 2017-09-01
+	 * `The payment method codes (the possible values of the «PM» and «BRAND» webhook notification parameters)`:
+	 * https://mage2.pro/t/4426
+	 * @used-by isBankCard()
+	 * @used-by optionTitle()
+	 * @return int
+	 */
+	private function option() {return $this->r('PM');}
 
 	/**
 	 * 2017-08-30
