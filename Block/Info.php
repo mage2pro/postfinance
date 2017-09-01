@@ -15,6 +15,11 @@ class Info extends \Df\Payment\Block\Info {
 	 */
 	final protected function prepare() {
 		$e = $this->e(); /** @var Event $e */
+		$this->siEx('PostFinance ID', df_tag('a', [
+			'href' => 'https://mage2.pro/t/4430'
+			,'target' => '_blank'
+			,'title' => 'How to locate a transaction in the PostFinance merchant interface?'
+		], $e->idE()));
 		$this->si('Payment Option', $this->choiceT());
 		if ($e->isBankCard()) {
 			$this->si(['Card Number' => $e->cardNumber()]);
