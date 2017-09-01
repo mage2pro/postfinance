@@ -13,8 +13,7 @@ The extension integrates your Magento 2 store with the **[PostFinance](https://w
   - [The **PayPal** payment interface in the test mode](https://mage2.pro/t/topic/4416)  
 
 ## How to buy
-The extension is not released yet, so there is no way to buy it just now.  
-The extension will be released when I will want so.  
+You can buy it with PayPal [here](https://mage2.pro/t/3183).  
 
 ## How to install
 ### 1. Free installation service
