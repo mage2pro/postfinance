@@ -231,11 +231,28 @@ https://github.com/marlon-be/marlon-ogone/blob/3.1.3/lib/Ogone/ShaComposer/Legac
 ]]></comment>
 					<depends><field id='enable'>1</field></depends>
 				</field>
+<!-- 2017-09-02
+«The possible currencies on our platform are:
+AED, ANG, ARS, AUD, AWG, BGN, BRL, BYR, CAD, CHF, CNY, CZK, DKK, EEK, EGP, EUR, GBP, GEL, HKD, HRK, HUF, ILS,
+ISK, JPY, KRW, LTL, LVL, MAD, MXN, NOK, NZD, PLN, RON, RUB, SEK, SGD, SKK, THB, TRY, UAH, USD, XAF, XOF, XPF and ZAR.
+If a merchant wants to accept payments in a currency that is not in our list, he can ask us to add the currency.
+The currencies a merchant can accept payments in depend on the contract with his acquirer.»
+[PostFinance] Which currencies are supported? https://mage2.pro/t/4446 -->
+				<field
+					id='currency'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='17'
+					translate='label'
+					type='Df\Directory\FormElement\Currency'
+				>
+					<label>Payment Currency</label>
+					<depends><field id='enable'>1</field></depends>
+				</field>
 				<field
 					id='description'
 					translate='label'
 					type='textarea'
-					sortOrder='17'
+					sortOrder='18'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -254,7 +271,7 @@ because the value can contain variables, so do not know the real length here. --
 					id='requireBillingAddress'
 					translate='label'
 					type='Df\Framework\Form\Element\Checkbox'
-					sortOrder='18'
+					sortOrder='19'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -268,7 +285,7 @@ because the value can contain variables, so do not know the real length here. --
 					id='min_order_total'
 					translate='label'
 					type='text'
-					sortOrder='19'
+					sortOrder='20'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -282,7 +299,7 @@ because the value can contain variables, so do not know the real length here. --
 					id='max_order_total'
 					translate='label'
 					type='text'
-					sortOrder='20'
+					sortOrder='21'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -296,7 +313,7 @@ because the value can contain variables, so do not know the real length here. --
 					id='country_restriction'
 					translate='label'
 					type='select'
-					sortOrder='21'
+					sortOrder='22'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
@@ -309,7 +326,7 @@ because the value can contain variables, so do not know the real length here. --
 					id='countries'
 					translate='label'
 					type='Df\Framework\Form\Element\Multiselect'
-					sortOrder='22'
+					sortOrder='23'
 					showInDefault='1'
 					showInWebsite='1'
 					showInStore='1'
