@@ -218,7 +218,7 @@ https://github.com/marlon-be/marlon-ogone/blob/3.1.3/lib/Ogone/ShaComposer/Legac
 					translate='label'
 				>
 					<label>Payment ID prefix</label>
-					<comment><![CDATA[<p class='df-note'>This option allows you to define a prefix for the payment identificators (the values of the <a href='https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters' target='_blank' title='«Integrate with PostFinance e-Commerce» → «4. Link your website to the payment page» → «4.2 Form parameters»'><code>ORDERID</code></a> API parameter).</p>
+					<comment><![CDATA[<p class='df-note'>This option allows you to define a prefix for the payment identificators (values of the <a href='https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce#formparameters' target='_blank' title='«Integrate with PostFinance e-Commerce» → «4. Link your website to the payment page» → «4.2 Form parameters»'><code>ORDERID</code></a> API parameter).</p>
 <p class='df-note'>In the most cases you do not need any prefix and can leave this option empty.</p>
 <p class='df-note'>But there are some (rare) cases</a> when your PostFinance payment identifiers can potentially overlap with the previous ones:</p>
 <ul class='df-note'>
