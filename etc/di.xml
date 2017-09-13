@@ -5,5 +5,4 @@
 >
 	<virtualType name='Dfe\PostFinance\Controller\CustomerReturn\Index' type='Df\Payment\CustomerReturn'/>
 	<virtualType name='Dfe\PostFinance\Controller\Index\Index' type='Df\Payment\W\Action'/>
-	<virtualType name='Dfe\PostFinance\W\Handler' type='Df\PaypalClone\W\Handler'/>
 </config>
