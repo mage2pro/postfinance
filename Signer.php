@@ -1,5 +1,6 @@
 <?php
 namespace Dfe\PostFinance;
+use Dfe\PostFinance\W\Event;
 /** 
  * 2017-08-20
  * SHA-IN:
@@ -53,8 +54,8 @@ final class Signer extends \Df\PaypalClone\Signer {
 		// 2017-08-21 `SHASIGN`: «SHA signature calculated by our system».
 		// https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback#feedbackparameters
 		/** @var string $password */
-		$password = isset($p['SHASIGN']) ? $s->password2() : $s->password1();
-		unset($p['SHASIGN']);
+		$password = isset($p[Event::K_SIGNATURE]) ? $s->password2() : $s->password1();
+		unset($p[Event::K_SIGNATURE]);
 		/**
 		 * 2017-08-21
 		 * SHA-IN:

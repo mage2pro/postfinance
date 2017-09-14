@@ -105,7 +105,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @used-by \Df\PaypalClone\W\Event::signatureProvided()
 	 * @return string
 	 */
-	protected function k_signature() {return 'SHASIGN';}
+	protected function k_signature() {return self::K_SIGNATURE;}
 
 	/**
 	 * 2017-08-29 «Transaction status».
@@ -136,4 +136,11 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @return int
 	 */
 	private function s0() {return dfc($this, function() {return intval(strval($this->status())[0]);});}
+
+	/**
+	 * 2017-09-14
+	 * @used-by k_signature()
+	 * @used-by \Dfe\PostFinance\Signer::sign()
+	 */
+	const K_SIGNATURE = 'SHASIGN';
 }
