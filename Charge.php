@@ -227,7 +227,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 * https://mage2.pro/t/4351
 			 * https://mage2.pro/t/4352
 			 */
-			,'OWNERTELNO' => $this->addressBS()->getTelephone()
+			,'OWNERTELNO' => $this->customerPhone()
 			/**
 			 * 2017-08-19
 			 * *) Integrate with PostFinance e-Commerce: «Customer town/city/...». Optional.
