@@ -16,7 +16,6 @@ because PostFinance has already shown a message to the customer.
 				<messageFailure><![CDATA[Sorry, the payment attempt is failed.
 <br/>Please try again, or try another payment method.]]></messageFailure>
 				<requireBillingAddress>1</requireBillingAddress>
-				<payment_action>authorize_capture</payment_action>
 <!-- 2017-08-20 It is the default value in the PostFinance merchant interface: https://mage2.pro/t/4362 -->
 				<testHashAlgorithm>sha1</testHashAlgorithm>
 				<title>PostFinance</title>
