@@ -1,1 +1,1 @@
-define(['Df_Payment/loader'], function(l) {return l('Dfe_PostFinance', 'dfe_post_finance');});
+define(['Df_Payment/loader'], function(l) {return l('Dfe_PostFinance');});
