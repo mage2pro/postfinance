@@ -1,7 +1,7 @@
 {
 	"name": "mage2pro/postfinance"
 	,"version": "1.0.9"
-	,"description": "The «PostFinance» payment extension for Magento 2."
+	,"description": "PostFinance integration with Magento 2"
 	,"type": "magento2-module"
 	,"homepage": "https://mage2.pro/c/extensions/postfinance"
 	,"license": "proprietary"
