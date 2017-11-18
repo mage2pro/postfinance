@@ -13,4 +13,6 @@
 	<virtualType name='Dfe\PostFinance\ConfigProvider' type='Df\Payment\ConfigProvider'>
 		<arguments><argument name='module' xsi:type='string'>Dfe_PostFinance</argument></arguments>
 	</virtualType>
+	<virtualType name='Dfe\PostFinance\Controller\CustomerReturn\Index' type='Df\Payment\CustomerReturn'/>
+	<virtualType name='Dfe\PostFinance\Controller\Index\Index' type='Df\Payment\W\Action'/>
 </config>
