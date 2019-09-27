@@ -4,7 +4,7 @@
 	xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd"
 >
 	<router id='standard'>
-		<route id='Dfe_PostFinance' frontName='dfe-postfinance'>
+		<route frontName='dfe-postfinance' id='Dfe_PostFinance'>
 			<module name='Dfe_PostFinance'/>
 		</route>
 	</router>
