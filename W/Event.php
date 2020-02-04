@@ -58,8 +58,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @return string|Phrase
 	 */
 	function optionTitle() {return $this->isBankCard()
-		? __('Bank Card (%1)', $this->r('BRAND'))
-		: dftr($this->option(), df_module_csv2($this, 'labels'))
+		? __('Bank Card (%1)', $this->r('BRAND')) : dftr($this->option(), df_module_csv2($this, 'labels'))
 	;}
 
 	/**
