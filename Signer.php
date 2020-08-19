@@ -50,9 +50,9 @@ final class Signer extends \Df\PaypalClone\Signer {
 	final protected function sign() {
 		$s = $this->s(); /** @var Settings $s */
 		$p = $this->v(); /** @var array(string => mixed) $p */
-		// 2017-08-21 Whether the result should be SHA-IN or SHA-OUT.
-		// 2017-08-21 `SHASIGN`: «SHA signature calculated by our system».
-		// https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback#feedbackparameters
+		# 2017-08-21 Whether the result should be SHA-IN or SHA-OUT.
+		# 2017-08-21 `SHASIGN`: «SHA signature calculated by our system».
+		# https://e-payment-postfinance.v-psp.com/en/en/guides/integration%20guides/e-commerce/transaction-feedback#feedbackparameters
 		/** @var string $password */
 		$password = isset($p[Event::K_SIGNATURE]) ? $s->password2() : $s->password1();
 		unset($p[Event::K_SIGNATURE]);

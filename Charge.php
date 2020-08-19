@@ -238,7 +238,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 			 * *) Fraud Detection Module: not mentioned.
 			 */
 			,'OWNERTOWN' => $ba->getCity()
-			// 2017-08-19 «Customer postcode or ZIP code». Optional. Alphanumeric (10).
+			# 2017-08-19 «Customer postcode or ZIP code». Optional. Alphanumeric (10).
 			/**
 			 * 2017-08-19
 			 * *) Integrate with PostFinance e-Commerce:

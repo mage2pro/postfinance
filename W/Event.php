@@ -71,9 +71,9 @@ final class Event extends \Df\PaypalClone\W\Event {
 	function ttCurrent() {return !$this->isSuccessful() ? parent::ttCurrent() : dfa([
 		4 => self::T_INFO
 		,5 => self::T_AUTHORIZE
-		,6 => self::T_VOID  // 2017-08-30 @todo
-		,7 => self::T_INFO  // 2017-08-30 @todo
-		,8 => self::T_REFUND // 2017-08-30 @todo
+		,6 => self::T_VOID  # 2017-08-30 @todo
+		,7 => self::T_INFO  # 2017-08-30 @todo
+		,8 => self::T_REFUND # 2017-08-30 @todo
 		,9 => self::T_CAPTURE
 	], $this->s0());}
 

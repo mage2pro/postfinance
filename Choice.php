@@ -2,7 +2,7 @@
 namespace Dfe\PostFinance;
 use Dfe\PostFinance\W\Event;
 use Magento\Framework\Phrase;
-// 2017-09-01
+# 2017-09-01
 /** @method Event|string|null responseF(...$k) */
 final class Choice extends \Df\Payment\Choice {
 	/**

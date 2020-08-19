@@ -1,7 +1,7 @@
 <?php
 namespace Dfe\PostFinance\Source\Hash;
-// 2017-08-20
-// `[PostFinance] How to setup the «Hash algorithm» option?`: https://mage2.pro/t/4362
+# 2017-08-20
+# `[PostFinance] How to setup the «Hash algorithm» option?`: https://mage2.pro/t/4362
 final class Algorithm extends \Df\Config\Source {
 	/**
 	 * 2017-08-20
