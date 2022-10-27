@@ -32,7 +32,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 
 	/**
 	 * 2017-09-01
-	 * @used-by optionTitle()
+	 * @used-by self::optionTitle()
 	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
 	 * @return bool
 	 */
@@ -122,23 +122,23 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * Note 1. «Payment method».
 	 * Note 2. `The payment method codes (the possible values of the «PM» and «BRAND»
 	 * webhook notification parameters)`: https://mage2.pro/t/4426
-	 * @used-by isBankCard()
-	 * @used-by optionTitle()
+	 * @used-by self::isBankCard()
+	 * @used-by self::optionTitle()
 	 * @return int
 	 */
 	private function option() {return $this->r('PM');}
 
 	/**
 	 * 2017-08-30
-	 * @used-by isSuccessful()
-	 * @used-by ttCurrent()
+	 * @used-by self::isSuccessful()
+	 * @used-by self::ttCurrent()
 	 * @return int
 	 */
 	private function s0() {return dfc($this, function() {return intval(strval($this->status())[0]);});}
 
 	/**
 	 * 2017-09-14
-	 * @used-by k_signature()
+	 * @used-by self::k_signature()
 	 * @used-by \Dfe\PostFinance\Signer::sign()
 	 */
 	const K_SIGNATURE = 'SHASIGN';
