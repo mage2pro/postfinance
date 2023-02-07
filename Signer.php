@@ -45,9 +45,8 @@ final class Signer extends \Df\PaypalClone\Signer {
 	 * @override
 	 * @see \Df\PaypalClone\Signer::sign()
 	 * @used-by \Df\PaypalClone\Signer::_sign()
-	 * @return string
 	 */
-	final protected function sign() {
+	final protected function sign():string {
 		$s = $this->s(); /** @var Settings $s */
 		$p = $this->v(); /** @var array(string => mixed) $p */
 		# 2017-08-21 Whether the result should be SHA-IN or SHA-OUT.

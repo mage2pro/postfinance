@@ -40,9 +40,8 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_Amount()
 	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
 	 */
-	protected function k_Amount() {return 'AMOUNT';}
+	protected function k_Amount():string {return 'AMOUNT';}
 
 	/**
 	 * 2017-08-19
@@ -51,18 +50,16 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_Currency()
 	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
 	 */
-	protected function k_Currency() {return 'CURRENCY';}
+	protected function k_Currency():string {return 'CURRENCY';}
 
 	/**
 	 * 2017-08-19 «Customer email address». Optional.
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_Email()
 	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
 	 */
-	protected function k_Email() {return 'EMAIL';}
+	protected function k_Email():string {return 'EMAIL';}
 	
 	/**
 	 * 2017-08-19
@@ -72,9 +69,8 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_MerchantId()
 	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
 	 */
-	protected function k_MerchantId() {return 'PSPID';}
+	protected function k_MerchantId():string {return 'PSPID';}
 
 	/**
 	 * 2017-08-18
@@ -89,18 +85,16 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_RequestId()
 	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
 	 */
-	protected function k_RequestId() {return 'ORDERID';}
+	protected function k_RequestId():string {return 'ORDERID';}
 
 	/**
 	 * 2017-08-18
 	 * @override
 	 * @see \Df\PaypalClone\Charge::k_Signature()
 	 * @used-by \Df\PaypalClone\Charge::p()
-	 * @return string
 	 */
-	protected function k_Signature() {return 'SHASIGN';}
+	protected function k_Signature():string {return 'SHASIGN';}
 
 	/**
 	 * 2017-08-18
@@ -109,7 +103,7 @@ final class Charge extends \Df\PaypalClone\Charge {
 	 * @used-by \Df\PaypalClone\Charge::p()
 	 * @return array(string => mixed)
 	 */
-	protected function pCharge() {
+	protected function pCharge():array {
 		$ba = $this->addressB(); /** @var OA $oa */
 		return [
 			/**

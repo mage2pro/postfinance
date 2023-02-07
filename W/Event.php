@@ -1,7 +1,6 @@
 <?php
 namespace Dfe\PostFinance\W;
 use Magento\Framework\Phrase;
-use Magento\Sales\Model\Order\Payment\Transaction as T;
 /**
  * 2017-08-29
  * Note 1. «Integrate with PostFinance e-Commerce» → «7. Transaction feedback»
@@ -12,8 +11,7 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  */
 final class Event extends \Df\PaypalClone\W\Event {
 	/**
-	 * 2017-09-01
-	 * `CN`: «Cardholder/customer name».
+	 * 2017-09-01 `CN`: «Cardholder/customer name».
 	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
 	 * @return string
 	 */
@@ -26,9 +24,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
 	 * @return string
 	 */
-	function cardNumber() {return dfp_card_format_last4(
-		df_trim_left($this->r('CARDNO'), 'X'), $this->r('BRAND')
-	);}
+	function cardNumber() {return dfp_card_format_last4(df_trim_left($this->r('CARDNO'), 'X'), $this->r('BRAND'));}
 
 	/**
 	 * 2017-09-01
@@ -45,9 +41,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::isSuccessful()
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
-	 * @return bool
 	 */
-	function isSuccessful() {return
+	function isSuccessful():bool {return
 		!in_array($this->s0(), [0, 1, 2]) && !in_array(intval($this->status()), [57, 59, 63, 73, 83, 93])
 	;}
 
@@ -68,7 +63,7 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
 	 * @used-by \Df\PaypalClone\W\Nav::id()
 	 */
-	function ttCurrent() {return !$this->isSuccessful() ? parent::ttCurrent() : dfa([
+	function ttCurrent():string {return !$this->isSuccessful() ? parent::ttCurrent() : dfa([
 		4 => self::T_INFO
 		,5 => self::T_AUTHORIZE
 		,6 => self::T_VOID  # 2017-08-30 @todo
@@ -82,9 +77,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_idE()
 	 * @used-by \Df\PaypalClone\W\Event::idE()
-	 * @return string
 	 */
-	protected function k_idE() {return 'PAYID';}
+	protected function k_idE():string {return 'PAYID';}
 
 	/**
 	 * 2017-08-29 «Your order reference».
@@ -93,18 +87,16 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @override
 	 * @see \Df\Payment\W\Event::k_pid()
 	 * @used-by \Df\Payment\W\Event::pid()
-	 * @return string
 	 */
-	protected function k_pid() {return 'orderID';}
+	protected function k_pid():string {return 'orderID';}
 
 	/**
 	 * 2017-08-29 «SHA signature calculated by our system (if SHA-OUT configured)».
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_signature()
 	 * @used-by \Df\PaypalClone\W\Event::signatureProvided()
-	 * @return string
 	 */
-	protected function k_signature() {return self::K_SIGNATURE;}
+	protected function k_signature():string {return self::K_SIGNATURE;}
 
 	/**
 	 * 2017-08-29 «Transaction status».
@@ -113,9 +105,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * @override
 	 * @see \Df\PaypalClone\W\Event::k_status()
 	 * @used-by \Df\PaypalClone\W\Event::status()
-	 * @return string
 	 */
-	protected function k_status() {return 'STATUS';}
+	protected function k_status():string {return 'STATUS';}
 
 	/**
 	 * 2017-09-01
@@ -124,17 +115,15 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * webhook notification parameters)`: https://mage2.pro/t/4426
 	 * @used-by self::isBankCard()
 	 * @used-by self::optionTitle()
-	 * @return int
 	 */
-	private function option() {return $this->r('PM');}
+	private function option():int {return $this->r('PM');}
 
 	/**
 	 * 2017-08-30
 	 * @used-by self::isSuccessful()
 	 * @used-by self::ttCurrent()
-	 * @return int
 	 */
-	private function s0() {return dfc($this, function() {return intval(strval($this->status())[0]);});}
+	private function s0():int {return intval($this->status()[0]);}
 
 	/**
 	 * 2017-09-14

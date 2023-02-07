@@ -4,7 +4,7 @@ namespace Dfe\PostFinance\Source\Hash;
 final class Algorithm extends \Df\Config\Source {
 	/**
 	 * 2017-08-20
-	 * http://php.net/manual/function.hash.php
+	 * https://php.net/manual/function.hash.php
 	 * hash('sha1', 'test')		https://3v4l.org/7nZfC
 	 * hash('sha256', 'test')	https://3v4l.org/emM73
 	 * hash('sha512', 'test')	https://3v4l.org/nErTM

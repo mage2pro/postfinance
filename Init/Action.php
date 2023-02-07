@@ -9,7 +9,6 @@ final class Action extends \Df\PaypalClone\Init\Action {
 	 * @override
 	 * @see \Df\Payment\Init\Action::redirectUrl()
 	 * @used-by \Df\Payment\Init\Action::action()
-	 * @return string
 	 */
-	protected function redirectUrl() {return 'https://e-payment.postfinance.ch/ncol/{stage}/orderstandard_utf8.asp';}
+	protected function redirectUrl():string {return 'https://e-payment.postfinance.ch/ncol/{stage}/orderstandard_utf8.asp';}
 }
