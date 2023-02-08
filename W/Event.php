@@ -21,9 +21,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * `BRAND`: «Card brand (our system derives this from the card number)».
 	 * `CARDNO`: «Masked card number».
 	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
-	 * @return string
 	 */
-	function cardNumber() {return dfp_card_format_last4(df_trim_left($this->r('CARDNO'), 'X'), $this->r('BRAND'));}
+	function cardNumber():string {return dfp_card_format_last4(df_trim_left($this->r('CARDNO'), 'X'), $this->r('BRAND'));}
 
 	/**
 	 * 2017-09-01
