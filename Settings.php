@@ -21,7 +21,6 @@ final class Settings extends \Df\Payment\Settings {
 	 * 2017-08-20 «SHA-OUT pass phrase».
 	 * `[PostFinance] How to setup my «SHA-OUT pass phrase»?`: https://mage2.pro/t/4359
 	 * @used-by \Dfe\PostFinance\Signer::sign()
-	 * @return string
 	 */
-	function password2() {return $this->testableP();}
+	function password2():string {return $this->testableP();}
 }
