@@ -13,9 +13,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	/**
 	 * 2017-09-01 `CN`: «Cardholder/customer name».
 	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
-	 * @return string
 	 */
-	function cardholder() {return $this->r('CN');}
+	function cardholder():string {return $this->r('CN');}
 
 	/**
 	 * 2017-09-01
