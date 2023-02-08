@@ -122,7 +122,7 @@ final class Signer extends \Df\PaypalClone\Signer {
 		 * @see hash() function's result is lowercased:
 		 * https://github.com/mage2pro/postfinance/blob/0.0.8/Source/Hash/Algorithm.php#L9-L11
 		 */
-		return strtoupper(hash($s->hashAlgorithm(), implode(df_map_k(function($k, $v) use($password){return
+		return strtoupper(hash($s->hashAlgorithm(), implode(df_map_k(function(string $k, $v) use($password):string {return
 			"$k=$v$password"
 		;}, $p))));
 	}
