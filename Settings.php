@@ -7,9 +7,8 @@ final class Settings extends \Df\Payment\Settings {
 	 * 2017-08-21 «Hash algorithm».
 	 * `[PostFinance] How to setup the «Hash algorithm» option?`: https://mage2.pro/t/4362
 	 * @used-by \Dfe\PostFinance\Signer::sign()
-	 * @return string
 	 */
-	function hashAlgorithm() {return $this->testable();}
+	function hashAlgorithm():string {return $this->testable();}
 
 	/**
 	 * 2017-08-20 «SHA-IN pass phrase».
