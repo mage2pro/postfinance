@@ -28,9 +28,8 @@ final class Event extends \Df\PaypalClone\W\Event {
 	 * 2017-09-01
 	 * @used-by self::optionTitle()
 	 * @used-by \Dfe\PostFinance\Block\Info::prepare()
-	 * @return bool
 	 */
-	function isBankCard() {return 'CreditCard' === $this->option();}
+	function isBankCard():bool {return 'CreditCard' === $this->option();}
 
 	/**
 	 * 2017-08-30
