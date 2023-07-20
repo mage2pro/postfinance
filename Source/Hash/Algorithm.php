@@ -13,5 +13,5 @@ final class Algorithm extends \Df\Config\Source {
 	 * @used-by \Df\Config\Source::toOptionArray()
 	 * @return array(string => string)
 	 */
-	protected function map():array {return df_map_r(function(int $v):string {return ["sha$v", "SHA-$v"];}, [1, 256, 512]);}
+	protected function map():array {return df_map_r(function(int $v):array {return ["sha$v", "SHA-$v"];}, [1, 256, 512]);}
 }
